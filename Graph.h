@@ -18,7 +18,9 @@
 #include <cstdint>
 #include <bitset>  // 包含 bitset 头文件
 #include"node.h"
-
+#include"./BicoreIndex/bicore_index.h"
+#include"dyn_rebuild.h"
+#include"./Utils/graph_utils.h"
 #include <stack>
 struct graphinc
 {
@@ -61,39 +63,33 @@ public:
         std::unordered_map<int, 
         std::unordered_set<int>>>>> index_core_v;
 
-        std::unordered_map<int, 
-        std::unordered_map<int, 
-        std::vector<label_node*>>> VC_uindex;
-        std::unordered_map<int, 
-        std::unordered_map<int, 
-        std::vector<label_node*>>> VC_vindex;
+        // std::unordered_map<int, 
+        // std::unordered_map<int, 
+        // std::vector<label_node*>>> VC_uindex;
+        // std::unordered_map<int, 
+        // std::unordered_map<int, 
+        // std::vector<label_node*>>> VC_vindex;
 
-        unordered_map<uint32_t,
-        unordered_map<int,
-        vector<u_node*>>> AC_u_uindex;
-        unordered_map<uint32_t,
-        unordered_map<int,
-        vector<u_node*>>> AC_u_vindex;
+        // std::unordered_map<int, 
+        // std::unordered_map<int, 
+        // std::vector<label_node*>>> VC_u_vindex;
+        // std::unordered_map<int, 
+        // std::unordered_map<int, 
+        // std::vector<label_node*>>> VC_v_uindex;
 
-        unordered_map<uint32_t,
-        unordered_map<int,
-        vector<u_node*>>> AC_v_vindex;
-        unordered_map<uint32_t,
-        unordered_map<int,
-        vector<u_node*>>> AC_v_uindex;
-
-        unordered_map<uint32_t,
-        unordered_map<int,
-        vector<u_node*>>> MAC_u_uindex;
-        unordered_map<uint32_t,
-        unordered_map<int,
-        vector<u_node*>>> MAC_u_vindex;
-        unordered_map<uint32_t,
-        unordered_map<int,
-        vector<u_node*>>> MAC_v_uindex;
-        unordered_map<uint32_t,
-        unordered_map<int,
-        vector<u_node*>>> MAC_v_vindex;
+       
+        // unordered_map<uint32_t,
+        // unordered_map<int,
+        // vector<u_node*>>> MAC_u_uindex;
+        // unordered_map<uint32_t,
+        // unordered_map<int,
+        // vector<u_node*>>> MAC_u_vindex;
+        // unordered_map<uint32_t,
+        // unordered_map<int,
+        // vector<u_node*>>> MAC_v_uindex;
+        // unordered_map<uint32_t,
+        // unordered_map<int,
+        // vector<u_node*>>> MAC_v_vindex;
     
     Graph();
     void createGraph(string filename);
@@ -122,31 +118,33 @@ public:
       unordered_set<int>&v_set );
      void labels_to_mask(unordered_set<string>& LU ,unordered_set<string>& LV,uint32_t&u_mask, uint32_t&v_mask);
      void labels_to_mask_init();
-     void creat_VC_index();
-     void VC_index_opt();
-     void creat_AC_Uindex();
-     void creat_AC_Vindex();
-     void creat_MAC_Uindex();
-     void creat_MAC_Vindex();
+    // void creat_VC_index();
+    // void VC_index_opt();
+    //  void creat_AC_Uindex();
+    //  void creat_AC_Vindex();
+    // void creat_MAC_Uindex();
+    // void creat_MAC_Vindex();
      double  online_core_label(unordered_set<string>&LU,unordered_set<string>&LV ,int a,int b);
      double online_core_label_graph(unordered_set<string>&LU,unordered_set<string>&LV ,int a,int b);
      void index_core_query(unordered_set<string>&LU,unordered_set<string>&LV,int a,int b);
-     double VC_query (unordered_set<string>&LU,unordered_set<string>&LV ,int a,int b);
-     double AC_query (unordered_set<string>&LU,unordered_set<string>&LV ,int a,int b);
-     double MAC_query (unordered_set<string>&LU,unordered_set<string>&LV ,int a,int b);
-     graphinc online_core(int q,unordered_set<int> &u_set,unordered_set<int> &v_set, unordered_map< int,vector<int>> &edge_u,unordered_map< int,vector< int>> &edge_v,int a,int b);
-     void MAC_to_bicore();
-     double  Edge_add_MAC_maintenance(string filename);
-     void MAC_to_bicore_delete();
-     double  Edge_delete_MAC_maintenance(string filename);
-     void load_AC_index(const string& filename, unordered_map<uint32_t,unordered_map<int, vector<u_node*>>>& label_index_batch);
-     void load_VC_index(const string& filename, unordered_map<int, unordered_map<int, vector<label_node*>>>& index_batch);
-     void insert_u_to_AC_index(unordered_map<uint32_t,unordered_map<int,vector<u_node*> > >&label_index_batch,int u,int a,int b,uint32_t label_mask);
-     void AC_index_opt(unordered_map<uint32_t,unordered_map<int,vector<u_node*> > >&label_index_batch);
-     void save_AC_index(const string& filename, const unordered_map<uint32_t, unordered_map<int, vector<u_node*>>>& label_index_batch);
-     void save_VC_index(const string& filename, const unordered_map<int, unordered_map<int, vector<label_node*>>>& index_batch);
-    void insert_u_to_MAC_index(unordered_map<uint32_t,unordered_map<int,vector<u_node*> > >&label_index_batch,int u,int a,int b,uint32_t label_mask);
-     // void insert_umask(std::unordered_map<int, 
+   //  double VC_query (unordered_set<string>&LU,unordered_set<string>&LV ,int a,int b);
+    //  double AC_query (unordered_set<string>&LU,unordered_set<string>&LV ,int a,int b);
+   //  double MAC_query (unordered_set<string>&LU,unordered_set<string>&LV ,int a,int b);
+    // graphinc online_core(int q,unordered_set<int> &u_set,unordered_set<int> &v_set, unordered_map< int,vector<int>> &edge_u,unordered_map< int,vector< int>> &edge_v,int a,int b);
+    // void MAC_to_bicore();
+    // double  Edge_add_MAC_maintenance(string filename);
+    // void MAC_to_bicore_delete();
+   //  double  Edge_delete_MAC_maintenance(string filename);
+    //  void load_AC_index(const string& filename, unordered_map<uint32_t,unordered_map<int, vector<u_node*>>>& label_index_batch);
+     //void load_VC_index(const string& filename, unordered_map<int, unordered_map<int, vector<label_node*>>>& index_batch);
+    //  void insert_u_to_AC_index(unordered_map<uint32_t,unordered_map<int,vector<u_node*> > >&label_index_batch,int u,int a,int b,uint32_t label_mask);
+    //  void AC_index_opt(unordered_map<uint32_t,unordered_map<int,vector<u_node*> > >&label_index_batch);
+    //  void save_AC_index(const string& filename, const unordered_map<uint32_t, unordered_map<int, vector<u_node*>>>& label_index_batch);
+     //void save_VC_index(const string& filename, const unordered_map<int, unordered_map<int, vector<label_node*>>>& index_batch);
+   // void insert_u_to_MAC_index(unordered_map<uint32_t,unordered_map<int,vector<u_node*> > >&label_index_batch,int u,int a,int b,uint32_t label_mask);
+    void save_index_batch(const string& filename, vector<string>label_u,vector<uint32_t> label_u_combinations,  const unordered_map<int, unordered_map<int, vector<label_node*>>>& index_batch); 
+    
+    // void insert_umask(std::unordered_map<int, 
   // std::unordered_map<int, 
   // std::vector<label_node*>>> &indexu_batch, int u,int a, int b, uint32_t label_mask);
 };

@@ -49,7 +49,10 @@
         "ratio": "cpp",
         "bitset": "cpp",
         "random": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "cstring": "cpp",
+        "regex": "cpp",
+        "iomanip": "cpp"
     },
     "editor.gotoLocation.alternativeDeclarationCommand": "editor.action.revealDefinition",
     "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.revealDefinition",

@@ -8,6 +8,11 @@
                 "-std=c++17",
                 "-g",
                 "${workspaceFolder}/*.cpp",       // 编译所有源码文件
+                "${workspaceFolder}/BicoreIndex/bicore_index.cpp",
+                "${workspaceFolder}/Utils/graph_utils.cpp",
+                "${workspaceFolder}/Index/VC_index.cpp",
+                "${workspaceFolder}/Index/AC_index.cpp",
+                "${workspaceFolder}/Index/MAC_index_build_maintenance.cpp",
                 "-I", "${workspaceFolder}",   // 包含头文件路径
                 "-o", "${workspaceFolder}/main.exe" // 输出可执行文件
             ],
