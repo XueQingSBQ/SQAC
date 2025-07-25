@@ -1,4 +1,4 @@
-## CQAC: Core Query on Attributed Co-bipartite Graph
+## CQAC: Efficient (𝛼, 𝛽)-Core Queries with Attribute Constraints over Bipartite Graphs
 
 A C++ implementation of **VC**, **AC**, and **MAC** indexing methods for efficient subgraph queries on co-bipartite graphs with attributes. This project supports full index construction, query, and dynamic maintenance (edge add/delete), accompanied by various experiments.
 
@@ -37,6 +37,16 @@ CQAC/
 
 #### Quick Compile
 
+To compile the project, you can use the provided Makefile. Simply run:
+
+```bash
+make
+```
+
+This will build the executable `main` using C++17 standard and optimization level O2.
+
+If you prefer, you can also compile manually with:
+
 ```bash
 g++ -std=c++17 -O2 -o main \
     Graph.cpp \
@@ -49,7 +59,6 @@ g++ -std=c++17 -O2 -o main \
     main.cpp
 ```
 
-Or use your favorite build system like CMake or Makefile.
 
 ---
 
@@ -117,15 +126,6 @@ This project is **academic/public use only**. For commercial use, please contact
 * Code author: \[Sun Baoqing]
 * Affiliation: \[Hunan University]
 * Email: \[xueqing@hnu.edu.cn]
-
----
-
-
-### 📌 TODO (Optional)
-
-* [ ] Add Makefile / CMakeLists.txt
-* [ ] Add unit tests
-* [ ] Add result visualizations
 
 ---
 
