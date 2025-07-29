@@ -7,7 +7,7 @@ A C++ implementation of **VC**, **AC**, and **MAC** indexing methods for efficie
 ### 🗂️ Project Structure
 
 ```
-CQAC/
+SQAC/
 ├── Index/                  # Index construction & maintenance
 │   ├── VC_index.cpp/h
 │   ├── AC_index.cpp/h
