@@ -1,4 +1,4 @@
-## CQAC: Efficient (𝛼, 𝛽)-Core Queries with Attribute Constraints over Bipartite Graphs
+## SQAC
 
 A C++ implementation of **VC**, **AC**, and **MAC** indexing methods for efficient subgraph queries on co-bipartite graphs with attributes. This project supports full index construction, query, and dynamic maintenance (edge add/delete), accompanied by various experiments.
 
